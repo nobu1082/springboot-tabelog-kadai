@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+	<div th:replace="~{fragment :: meta}"></div>
+
+	<div th:replace="~{fragment :: styles}"></div>
+
+	<title>レビュー一覧</title>
+</head>
+
+<body>
+	<div class="nagoyameshi-wrapper">
+		<!-- ヘッダー -->
+		<div th:replace="~{fragment :: header}"></div>
+		<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm nagoyameshi-navbar">
+			<div class="container nagoyameshi-container">
+				<a class="navbar-brand" th:href="@{/?loggedOut}">
+					<!--		<img class="samuraitravel-logo me-1" th:src="@{/images/logo.png}" alt="SAMURAI Travel">  -->
+				</a>
+			</div>
+		</nav>
+
+		<main>
+			<div class="container pt-4 pb-5 nagoyameshi-container">
+				<div class="row justify-content-center">
+					<div class="col-xxl-9 col-xl-10 col-lg-11">
+
+						<h1 class="mb-4 text-center">投稿済みレビュ一覧</h1>
+						<a th:href="@{/stores/reviews/register}" th:text='新しいレビューを登録する'></a>
+						<!--	<a th:href="@{/houses/__${house.getId()}__/reviews/register">新しいレビューを登録する</a> -->
+
+
+						<table class="table">
+							<thead>
+								<tr>
+									<th>レビュー　</th>
+									<th>点数５点満点</th>
+									<th>民宿の名前</th>
+									<th>投稿者の名前</th>
+									<th scope="col"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="review : ${reviews}">
+									<td th:text="${review.commenttext}"></td>
+									<td th:text="${review.value}"></td>
+									<td th:text="${review.storeid.name}"></td>
+									<td th:text="${review.userid.name}"></td>
+									
+									<td th:if="${review.userid.email == #authentication.name}">
+									<td><a th:href="@{/stores/reviews/{id}(id=${review.id})}">更新</a></td>
+									<td th:if="${review.userid.email == #authentication.name}">
+									<td><a href="#" class="nagoyameshi-link-danger" data-bs-toggle="modal" th:data-bs-target="${'#deleteReviewModal' + review.getId()}">削除</a></td>
+									
+									<!-- 削除用モーダル -->
+									<div class="modal fade" th:id="${'deleteReviewModal' + review.getId()}" tabindex="-1"
+										th:aria-labelledby="${'deleteReviewModalLabel' + review.getId()}">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title"
+														th:id="${'deleteReviewModalLabel' + review.getId()}"
+														th:text="${'レビュー内容：「' + review.commenttext + '」を削除してもよろしいですか？'}"></h5>
+													<button type="button" class="btn-close" data-bs-dismiss="modal"
+														aria-label="閉じる"></button>
+												</div>
+												<div class="modal-footer">
+													<form method="post"
+														th:action="@{/stores/__${review.getId()}__/reviews/delete}">
+														<button type="submit"
+															class="btn nagoyameshi-btn-danger text-white shadow-sm">削除</button>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</tr>
+							</tbody>
+						</table>
+						<div th:replace="~{fragment :: footer}"></div>
+					</div>
+
+					<div th:replace="~{fragment :: scripts}"></div>
+
+</body>
+
+</html>
