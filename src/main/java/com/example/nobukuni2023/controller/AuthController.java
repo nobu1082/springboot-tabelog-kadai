@@ -20,11 +20,8 @@ import jakarta.servlet.http.HttpServletRequest;
 @Controller
 public class AuthController {
 	  private final UserService userService;    
-	 // private final StripeService stripeService;
-	  
-	     public AuthController(UserService userService ) {        
+	 	     public AuthController(UserService userService ) {        
 	         this.userService = userService;
-	   //      this.stripeService = stripeService;
 	     }  
 	     
 	@GetMapping("/login")

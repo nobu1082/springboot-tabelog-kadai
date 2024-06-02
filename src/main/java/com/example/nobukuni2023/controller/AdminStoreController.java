@@ -48,8 +48,8 @@ public class AdminStoreController {
 
 		model.addAttribute("storePage", storePage);
 		model.addAttribute("keyword", keyword);
-
-		return "admin/stores/index";
+		return "stores/index";
+		//return "admin/stores/index";
 	}
 	
 	@PostMapping("/admin/stores/delete")
