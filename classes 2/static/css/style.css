@@ -1,0 +1,127 @@
+ html {
+   font-size: 18px;
+ }
+ 
+ body {
+   font-family: 'Noto Sans JP', sans-serif;  
+ }
+ 
+ h1 {
+   font-size: 3.0rem;
+ }
+ h2 {
+   font-size: 1.475rem;
+ }
+ h3 {
+   font-size: 1.25rem;
+ }
+
+ a {
+   color: #ff7f50;
+   text-decoration: none !important;
+ }
+ 
+ a:hover {
+     color: #407784;
+ }
+ 
+ footer {
+   width: 100%;
+   height: 60px;
+   position: absolute;
+   bottom: 0;    
+   background-color: #ff7f50;
+ }
+ 
+ .nagoyameshi-wrapper {
+   min-height: 100vh;
+   position: relative;
+   padding-bottom: 60px;
+   box-sizing: border-box;
+ }
+ 
+ .nagoyameshi-navbar {
+   min-height: 60px;
+ }
+ 
+ .nagoyameshi-logo {
+   height: 130px; width :130px 
+ }
+ 
+ .nagoyameshi-btn {
+   background-color: #ff7f50 !important;   
+   transition: 0.1s;
+ }
+ 
+ .nagoyameshi-btn:hover {
+   opacity: 0.8;   
+ }
+ 
+ .nagoyameshi-page-link {
+   color: #ff7f50;
+ }
+ 
+ .nagoyameshi-page-link:hover {
+   color: #407784;
+ }
+ 
+ .nagoyameshi-active {
+   background-color: #ff7f50 !important;
+   border-color: #ff7f50 !important;
+ }
+ 
+  .nagoyameshi-pre-wrap {
+  
+   white-space: pre-wrap;
+ }
+ 
+  .nagoyameshi-link-danger {
+     color: #f2594b;
+ }
+ 
+ .nagoyaheshi-link-danger:hover {
+     color: #a63c3c;
+ }
+ 
+ .nagoyameshi-btn-danger {
+     background-color: #f2594b !important;
+     transition: 0.1s;
+ }
+ 
+ .nagoyameshi-btn-danger:hover {
+   opacity: 0.8;   
+ }
+ 
+.nagoyameshi-dropdown-item:active {
+   background-color: #f2594b;
+ }
+ 
+.nagoyameshi-card-link {
+   transition: 0.3s;
+ }
+ 
+ .nagoyameshi-card-link:hover {
+   opacity: 0.7;
+ }
+ 
+ .nagoyameshi-horizontal-card-image {
+   width: 100%;
+   height: 240px;
+   object-fit: cover;
+ } 
+
+.nagoyameshi-vertical-card-image {
+   width: 100%;
+   height: 150px;
+   object-fit: cover;
+ }
+ 
+ .nagoyameshi-search-form {
+     max-width: 300px;
+ }
+
+ @media screen and (min-width: 1400px) {
+   .samuraitravel-container {
+     max-width: 1200px;
+   }
+ }
