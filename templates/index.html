@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+	<div th:replace="~{fragment :: meta}"></div>
+
+	<div th:replace="~{fragment :: styles}"></div>
+</head>
+
+<body>
+	<div class="nagoyameshi-wrapper">
+		<!-- ヘッダー -->
+		<div th:replace="~{fragment :: header}"></div>
+
+		<main>
+			<div class="container pt-4 pb-5 nagoyameshi-container">
+				<div th:if="${param.loggedIn}" class="alert alert-info">
+					ログインしました。
+				</div>
+
+				<div th:if="${param.loggedOut}" class="alert alert-info">
+					ログアウトしました。
+				</div>
+				<div th:if="${successMessage}" class="alert alert-info">
+					<span th:text="${successMessage}"></span>
+				</div>
+
+				<div class="d-flex justify-content-center" >
+					<form method="get" th:action="@{/stores}" class="mb-5 nagoyameshi-search-form">
+						<div class="input-group">
+							<input type="text" class="form-control" name="keyword" th:value="${keyword}"
+								placeholder="NAGOYAMESHI 店舗名">
+							<button type="submit" class="btn text-black shadow-sm nagoyamameshi-btn">検索</button>
+						</div>
+					</form>
+				</div>
+
+				<h2 class="text-center mb-3">
+
+
+
+
+					<tr>
+						<th>
+						<td>
+						<a th:href="@{/stores}">«登録されている全ての店舗»</a>
+						
+						<td>
+						<a th:href="@{admin/stores/register}" sec:authorize="hasRole('ROLE_ADMIN')">店舗の登録はこちら</a>
+						</td>
+						
+						</th>
+					</tr>
+				</h2>
+<main>
+			<div class="container pt-4 pb-5 nagoyameshi-container">
+				<div class="row justify-content-center">
+					<div class="col-xxl-9 col-xl-10 col-lg-11">
+
+						
+
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">登録済み店舗カテゴリ一覧</th>
+									<th scope="col"></th>
+									<th scope="col"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="category : ${categories}">
+										<td th:text="${category.getName()}"></td>
+										<td><a th:href="@{/stores/category/__${category.getId()}__}">登録店舗はこちら</a></td> 
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+				</div>
+			</div>
+		</main>
+			</div>
+		</main>
+
+		<!-- フッター -->
+		<div th:replace="~{fragment :: footer}"></div>
+	</div>
+
+	<div th:replace="~{fragment :: scripts}"></div>
+</body>
+
+</html>

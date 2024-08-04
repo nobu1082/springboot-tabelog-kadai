@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+  <head>
+    <title>有料会員解除</title>
+  </head>
+  <body>
+    <form th:action="@{/user/subsccancel}" method="POST">
+      <!-- Note: If using PHP set the action to /create-checkout-session.php -->
+
+      <input type="hidden" name="priceId" value="price_1PCcVZJsSQOmZTMC9yEmSw84" />
+      <button type="submit">有料会員解除完了しました。</button>
+    </form>
+    
+      <script src="https://js.stripe.com/v3"></script>
+         <script th:inline="javascript">
+             const sessionId = /*[[${sessionId}]]*/"sessionId";                
+         </script>        
+         <script th:src="@{/js/stripe.js}"></script>   
+    
+  </body>
+</html>
